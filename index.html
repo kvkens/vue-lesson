@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue.js demo GitHub Commit</title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h1>最新的代码提交记录</h1>
+			<template v-for="branch in branches">
+				<input type="radio" :id="branch" :value="branch" name="branch" v-model="currentBranch" />
+				<label :for="branch">{{branch}}</label>
+			</template>
+			<p>当前分支是：{{currentBranch}}</p>
+			<ul>
+				<li v-for="commit in commits">
+					[{{commit.commit.author.date | formatDate}}] [{{commit.commit.author.name}}]<a target="_blank" :href="commit.html_url">{{commit.commit.message}}</a>
+					
+				</li>
+			</ul>
+		</div>
+		
+		
+		<script type="text/javascript" src="js/vue.min.js" ></script>
+		<script type="text/javascript" src="js/app.js" ></script>
+	</body>
+</html>
